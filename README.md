@@ -28,5 +28,5 @@ This full-stack web application simulates live equity trading in a cloud environ
 - Includes insider sentiments, recommendation trends, and historical earnings per share (EPS) surprises.
 
 ## Additional Functionalities
-- **Watchlist**: Users can keep track of selected stocks.
+- **Watchlist**: Users can keep track of price variations for selected stocks.
 - **Portfolio Management**: View and manage current stock holdings.
