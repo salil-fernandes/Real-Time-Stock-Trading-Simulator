@@ -30,3 +30,13 @@ This full-stack web application simulates live equity trading in a cloud environ
 ## Additional Functionalities
 - **Watchlist**: Users can keep track of price variations for selected stocks.
 - **Portfolio Management**: View and manage current stock holdings.
+
+<img src="images/1.png" alt="Home Section" width="600">
+
+<img src="images/2.png" alt="Summary Tab" width="600">
+
+<img src="images/3.png" alt="Top News Tab" width="600">
+
+<img src="images/4.png" alt="Charts Tab" width="600">
+
+<img src="images/5.png" alt="Insights Tab" width="600">
