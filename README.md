@@ -4,6 +4,8 @@ This project was developed using [Angular CLI](https://github.com/angular/angula
 
 This full-stack web application simulates live equity trading in a cloud environment. It features real-time stock transaction simulations, leveraging asynchronous data sharing for high fidelity. Built with Angular, TypeScript, and Bootstrap on the frontend and NodeJS on the backend with MongoDB as the primary database, the app is hosted on Google Cloud Platform.
 
+<img src="images/1.png" alt="Home Section" width="800" height="450">
+
 ## Features
 - **Finnhub Stock APIs**: Fetch data for stock tickers, including price quotes, charts, and news.
 - **Home Section**: Divided into Summary, Top News, Charts, and Insights tabs.
@@ -20,6 +22,11 @@ This full-stack web application simulates live equity trading in a cloud environ
 - Shows relevant news articles and updates about the company. Shows relevant news articles and updates about the company.
 - Clicking on any news item card opens a modal with clickable links to share the news article as a post on Twitter or Facebook.
 
+<div style="display: flex;">
+  <img src="images/2.png" width="700" height="450">
+  <img src="images/3.png" width="700" height="450">
+</div>
+
 ### Charts
 - Provides historical stock price variations and technical indicators over different time periods.
 - These charts are powered by Highcharts APIs and are interaction-enabled, allowing users to click on any point to see performance metrics such as the stock price at a particular time on a particular day.
@@ -30,12 +37,6 @@ This full-stack web application simulates live equity trading in a cloud environ
 ## Additional Functionalities
 - **Watchlist**: Users can keep track of price variations for selected stocks.
 - **Portfolio Management**: View and manage current stock holdings.
-
-<img src="images/1.png" alt="Home Section" width="600">
-
-<img src="images/2.png" alt="Summary Tab" width="600">
-
-<img src="images/3.png" alt="Top News Tab" width="600">
 
 <img src="images/4.png" alt="Charts Tab" width="600">
 
