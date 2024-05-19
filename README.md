@@ -17,10 +17,12 @@ This full-stack web application simulates live equity trading in a cloud environ
 - Displays the company’s high, low, open, and previous close prices, along with company information like IPO date, industry, and peers.
 
 ### Top News
-- Shows relevant news articles and updates about the company.
+- Shows relevant news articles and updates about the company. Shows relevant news articles and updates about the company.
+- Clicking on any news item card opens a modal with clickable links to share the news article as a post on Twitter or Facebook.
 
 ### Charts
 - Provides historical stock price variations and technical indicators over different time periods.
+- These charts are powered by Highcharts APIs and are interaction-enabled, allowing users to click on any point to see performance metrics such as the stock price at a particular time on a particular day.
 
 ### Insights
 - Includes insider sentiments, recommendation trends, and historical earnings per share (EPS) surprises.
