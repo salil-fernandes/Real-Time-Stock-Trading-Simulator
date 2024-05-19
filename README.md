@@ -40,6 +40,6 @@ This full-stack web application simulates live equity trading in a cloud environ
 - **Portfolio Management**: View and manage current stock holdings.
 
 <div style="display: flex;">
-  <img src="images/5.png" width="600" height="420">
-  <img src="images/6.png" width="600" height="420">
+  <img src="images/5.png" width="500" height="300">
+  <img src="images/6.png" width="500" height="300">
 </div>
