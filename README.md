@@ -4,7 +4,7 @@ This project was developed using [Angular CLI](https://github.com/angular/angula
 
 This full-stack web application simulates live equity trading in a cloud environment. It features real-time stock transaction simulations, leveraging asynchronous data sharing for high fidelity. Built with Angular, TypeScript, and Bootstrap on the frontend and NodeJS on the backend with MongoDB as the primary database, the app is hosted on Google Cloud Platform.
 
-<img src="images/1.png" alt="Home Section" width="800" height="450">
+<img src="images/1.png" alt="Home Section" width="850" height="450">
 
 ## Features
 - **Finnhub Stock APIs**: Fetch data for stock tickers, including price quotes, charts, and news.
@@ -23,8 +23,8 @@ This full-stack web application simulates live equity trading in a cloud environ
 - Clicking on any news item card opens a modal with clickable links to share the news article as a post on Twitter or Facebook.
 
 <div style="display: flex;">
-  <img src="images/2.png" width="700" height="450">
-  <img src="images/3.png" width="700" height="450">
+  <img src="images/2.png" width="800" height="420">
+  <img src="images/3.png" width="800" height="420">
 </div>
 
 ### Charts
