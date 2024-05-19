@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Stock Search</a>
+        </div>
+
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar"
+            aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation"
+            (click)="isNavbarExpanded = !isNavbarExpanded" [ngClass]="{'mb-3': isNavbarExpanded}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="n_bar">
+            <ul class="nav navbar-nav ms-auto">
+                <li>
+                    <a class="nav-link" [ngClass]="{'ps-3': isNavbarExpanded}"
+                        [routerLink]="['/', 'search', tickerSymbol]" routerLinkActive="active">Search</a>
+                </li>
+                <li>
+                    <a class="nav-link" [ngClass]="{'ps-3': isNavbarExpanded}" routerLink="/watchlist"
+                        routerLinkActive="active">Watchlist</a>
+                </li>
+                <li>
+                    <a class="nav-link" [ngClass]="{'ps-3': isNavbarExpanded}" routerLink="/portfolio"
+                        routerLinkActive="active">Portfolio</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

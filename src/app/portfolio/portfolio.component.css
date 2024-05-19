@@ -1,0 +1,11 @@
+.card-container {
+    width: 85%;
+}
+
+.small-screen-card-container {
+    width: 100%;
+}
+
+.clickable {
+    cursor: pointer;
+}

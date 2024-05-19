@@ -1,0 +1,42 @@
+<div>
+    <h1>My Watchlist</h1>
+    <mat-spinner id="data-spinner" [diameter]="90" *ngIf="stillLoading"></mat-spinner>
+    <ngb-alert *ngIf="watchlistIsEmpty" [dismissible]="false" style="text-align: center;">
+        Currently you don't have any stock in your watchlist.
+    </ngb-alert>
+    <div class="row watchlist">
+        <div class="col">
+            <div class="watchlist-card mb-3 clickable" *ngFor="let stock of combinedData; let i = index"
+                (click)="onClickRedirection(stock.ticker)">
+                <button type="button" style="background-color: transparent;" class="dismiss-button"
+                    (click)="removeFromWatchlist(i)">
+                    <i class="bi bi-x" style="color: black;"></i>
+                </button>
+                <div class="row mt-2 mb-2" [ngClass]="{
+                    'width-small-screen': isSmall
+                  }">
+                    <div class="col-7">
+                        <span class="ms-2 fs-4">{{ stock.profile.ticker
+                            }}</span><span class="{{ stock.color }} fs-4" style="float: right;">{{
+                            stock.latest.c
+                            }}</span>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2" [ngClass]="{
+                    'width-small-screen': isSmall
+                  }">
+                    <div class="col-7">
+                        <div>
+                            <span class="ms-2 fs-6">{{ stock.profile.name }}</span>
+                            <span class="{{stock.color}} fs-6" style="float: right; text-align: right;">
+                                <i *ngIf="stock.color == 'text-danger'" class="bi bi-caret-down-fill"></i>
+                                <i *ngIf="stock.color != 'text-danger'" class="bi bi-caret-up-fill"></i>
+                                {{ stock.latest.d }}({{ stock.latest.dp }}%)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

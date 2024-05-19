@@ -1,0 +1,36 @@
+<div class="modal-info-container">
+    <div class="modal-header">
+        <div class="d-flex align-items-center" style="width: 70%">
+            <h2 class="mb-0">{{ stockTicker }}</h2>
+        </div>
+        <div style="margin-left: 90px;">
+            <button type="button" style="background-color: transparent;" class="dismiss-button"
+                (click)="activeModal.dismiss('Cross click')">
+                <i class="fa-solid fa-xmark" style="color: blue; text-decoration: underline;"></i>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body ms-2">
+        <div>
+            <span class="fw-bold me-1">Current Price:</span><span>{{ currentPrice }}</span>
+        </div>
+        <div>
+            <span class="fw-bold me-1">Money in Wallet:</span><span>${{ currentBalance }}</span>
+        </div>
+        <div class="quantity-selector mt-2">
+            <span class="fw-bold me-2"><label for="quantityInput">Quantity:</label></span><span><input type="number"
+                    id="quantityInput" [(ngModel)]="quantity" (ngModelChange)="onQuantityChange($event)" min="0"
+                    class="quantity-input form-control"></span>
+        </div>
+        <div *ngIf="insufficientBalance" class="error-message">Not enough money in wallet!</div>
+    </div>
+    <div class="modal-body total-container">
+        <div class="ms-2 mt-1" style="width: 88%;"><span class="fw-bold me-2">Total:</span><span>{{ (quantity *
+                currentPrice).toFixed(2)
+                }}</span>
+        </div>
+        <div>
+            <button type="button" class="btn btn-success" (click)="checkIfFirst()" [disabled]="unavailable">Buy</button>
+        </div>
+    </div>
+</div>

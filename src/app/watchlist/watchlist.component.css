@@ -1,0 +1,21 @@
+#data-spinner {
+    margin: auto;
+}
+
+.watchlist {
+    margin: auto;
+}
+
+.width-small-screen {
+    width: 165%;
+}
+
+.watchlist-card {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+

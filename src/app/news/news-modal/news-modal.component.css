@@ -1,0 +1,21 @@
+
+.share-container {
+    padding: 16px;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+}
+
+.dismiss-button {
+    display: block;
+    align-items: top;
+}
+
+.twitter-icon {
+    color: #000000;
+    font-size: 2.5em;
+}
+
+.facebook-icon {
+    color: #0000FF;
+    font-size: 2.7em;
+}

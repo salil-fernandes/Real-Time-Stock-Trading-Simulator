@@ -1,0 +1,31 @@
+<div class="mx-auto">
+    <h1 class="search-title" style="text-align: center;">STOCK SEARCH</h1>
+</div>
+
+<div class="main-box my-3">
+    <div class="text-input-container">
+        <form class="input-form d-flex justify-content-between" (ngSubmit)="searchClick($event)">
+            <div class="input-box"><mat-label></mat-label>
+                <input matInput aria-label="Input" [matAutocomplete]="auto" [formControl]="mainForm"
+                    placeholder="Enter Stock Ticker Symbol" class="text-field-input">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="optionSelect($event.option.value)">
+                    <mat-option *ngIf="isLoading" class="is-loading" id="autocomplete-load-spinner">
+                        <mat-spinner [diameter]="30"></mat-spinner>
+                    </mat-option>
+                    <mat-option *ngFor="let stock of finalAutoCompleteCompanies | async" [value]="stock.symbol">
+                        <span>{{stock.symbol}}</span>
+                        <small> | {{stock.description}}</small>
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+            <div class="icons-container">
+                <button type="submit" style="margin-right:2px; background-color: white;" (click)="searchClick($event)">
+                    <i class="bi bi-search input-icon cursor-pointer"></i>
+                </button>
+                <span (click)="resetClick()">
+                    <i class="bi bi-x-lg input-icon cursor-pointer"></i>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

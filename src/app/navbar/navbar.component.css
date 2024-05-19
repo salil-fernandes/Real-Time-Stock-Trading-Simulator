@@ -1,0 +1,11 @@
+nav {
+    background-color: #2424AB !important;
+}
+
+.active {
+    border-color: 	#DCDCDC;
+    border: 2px solid 	#DCDCDC;
+    border-radius: 15px;
+    color: #B0B0B0 !important;
+}
+

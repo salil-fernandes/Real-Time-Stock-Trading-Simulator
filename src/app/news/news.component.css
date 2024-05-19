@@ -1,0 +1,39 @@
+.news-items-row {
+    margin: auto;
+}
+
+.news-card {
+    margin-bottom: 20px;
+    background-color: #f6f6f6;
+}
+
+.image-container {
+    width: 100%;
+}
+
+.height-small-screen {
+    height: 53vh;
+}
+
+.height-medium-screen {
+    height: 32vh;
+}
+
+.height-large-screen {
+    height: 14vh;
+}
+
+.news-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.align-center {
+    display: inline-flex;
+    align-items: center;
+}
+
+.clickable {
+    cursor: pointer;
+}

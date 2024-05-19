@@ -1,0 +1,48 @@
+<div class="row news-items-row">
+    <div class="col-md-6 mt-2 d-flex justify-content-center">
+        <div *ngIf="dataPresent1">
+            <mat-card *ngFor="let news of filteredDataSet1" class="news-card clickable" (click)="openModal(news)">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="image-container m-3" [ngClass]="{
+                                'height-small-screen': isSmall,
+                                'height-medium-screen': isMedium,
+                                'height-large-screen': isLarge
+                              }">
+                            <img class="news-image" src="{{ news.image }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-sm-12 d-flex align-items-center">
+                        <div class="ms-3 d-flex align-items-center justify-content-center" [ngClass]="{
+                            'pb-3': isSmall,
+                            'pb-2': isMedium
+                        }">{{ news.headline }}</div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="col-md-6 mt-2 d-flex justify-content-center">
+        <div *ngIf="dataPresent2">
+            <mat-card *ngFor="let news of filteredDataSet2" class="news-card clickable" (click)="openModal(news)">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="image-container m-3" [ngClass]="{
+                                'height-small-screen': isSmall,
+                                'height-medium-screen': isMedium,
+                                'height-large-screen': isLarge
+                              }">
+                            <img class="news-image" src="{{ news.image }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-sm-12 d-flex align-items-center">
+                        <div class="ms-3 d-flex align-items-center justify-content-center" [ngClass]="{
+                            'pb-3': isSmall,
+                            'pb-2': isMedium
+                        }">{{ news.headline }}</div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

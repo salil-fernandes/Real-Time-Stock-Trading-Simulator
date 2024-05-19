@@ -1,0 +1,69 @@
+<ngb-alert *ngIf="stockBought" type="alert-success" class="alert alert-success" (closed)="stockBought = false">
+    {{ stockTicker }} bought successfully.
+</ngb-alert>
+
+<ngb-alert *ngIf="stockSold" type="alert-danger" class="alert alert-danger" (closed)="stockSold = false">
+    {{ stockTicker }} sold successfully.
+</ngb-alert>
+
+<h1>My Portfolio</h1>
+<h3>Money in Wallet: ${{ walletBalance }}</h3>
+
+<mat-spinner style="margin: auto;" [diameter]="90" *ngIf="loading"></mat-spinner>
+
+<ngb-alert *ngIf="emptyPortfolio" [dismissible]="false" style="text-align: center;">
+    Currently you don't have any stock.
+</ngb-alert>
+
+<div *ngIf="visible">
+    <div *ngFor="let stock of fetchedStock; let i = index;" class="card mb-3 card-container" [ngClass]="{
+        'small-screen-card-container': isSmall
+    }">
+        <div class="card-header clickable" (click)="onClickRedirection(stock.ticker)">
+            <span class="fs-4">
+                {{ stock.ticker }}
+            </span>
+            <span class="text-secondary ms-1 fs-6">{{ stock.company }}</span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md fs-6">
+                    <div style="width: 95%;" class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Quantity:</span>
+                        <span class="fw-bold">{{ stock.quantity }}</span>
+                    </div>
+                    <div style="width: 95%;" class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Avg. Cost / Share:</span>
+                        <span class="fw-bold">{{ stock.costpershare }}</span>
+                    </div>
+                    <div style="width: 95%;" class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Total Cost:</span>
+                        <span class="{{ stock.color }} fw-bold">{{ stock.total }}</span>
+                    </div>
+                </div>
+                <div class="col-md fs-6">
+                    <div style="width: 95%;" class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Change:</span>
+                        <span class="{{ stock.color }} fw-bold">
+                            <i *ngIf="stock.color === 'text-danger'" class="bi bi-caret-down-fill"></i>
+                            <i *ngIf="stock.color === 'text-success'" class="bi bi-caret-up-fill"></i>
+                            {{ stock.change }}</span>
+                    </div>
+                    <div style="width: 95%;" class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Current Price:</span>
+                        <span class="{{ stock.color }} fw-bold">{{ stock.current }}</span>
+                    </div>
+                    <div style="width: 95%;" class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Market Value:</span>
+                        <span class="fw-bold">{{ stock.market }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-danger" (click)="buyMoreStock(i)">Buy</button>
+            <button class="btn btn-primary ms-2" (click)="sellSomeStock(i)">Sell</button>
+        </div>
+    </div>
+</div>

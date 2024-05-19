@@ -1,0 +1,190 @@
+<app-search></app-search>
+
+<ngb-alert id="invalid-symbol-alert" *ngIf="tickerInvalid" type="alert-danger" class="alert alert-danger"
+    [dismissible]="false">
+    No data found. Please enter a valid Ticker
+</ngb-alert>
+
+<ngb-alert id="blank-ticker-alert" *ngIf="blankInput" type="alert-danger" class="alert alert-danger"
+    (closed)="exitBlankInput()">
+    Please enter a valid ticker
+</ngb-alert>
+
+<ngb-alert *ngIf="watchlistAppended" type="alert-success" class="alert alert-success"
+    (closed)="watchlistAppended = false">
+    {{ ticker }} added to Watchlist.
+</ngb-alert>
+
+<ngb-alert *ngIf="watchlistUnappended" type="alert-danger" class="alert alert-danger"
+    (closed)="watchlistUnappended = false">
+    {{ ticker }} removed from Watchlist.
+</ngb-alert>
+
+<ngb-alert *ngIf="stockBought" type="alert-success" class="alert alert-success" (closed)="stockBought = false">
+    {{ ticker }} bought successfully.
+</ngb-alert>
+
+<ngb-alert *ngIf="stockSold" type="alert-danger" class="alert alert-danger" (closed)="stockSold = false">
+    {{ ticker }} sold successfully.
+</ngb-alert>
+
+
+<mat-spinner id="data-loading-spinner" [diameter]="90" *ngIf="stillLoading"></mat-spinner>
+
+<div *ngIf="validDataPresent && !tickerInvalid && !stillLoading">
+    <div class="row profile-upper">
+        <div class="col profile-upper-left">
+            <div class="py-3 d-flex justify-content-md-center justify-content-start"><span class="fs-1 fw-bold">{{
+                    ticker }}</span>
+                <i class="bi bi-star fs-5 ms-1" *ngIf="!presentInWatchlist" (click)="addToWatchlist()"></i>
+                <i class="bi bi-star-fill fs-5" *ngIf="presentInWatchlist" (click)="removeFromWatchlist()"
+                    style="color: gold;"></i>
+            </div>
+            <div class="fs-5 text-secondary py-1 d-flex justify-content-md-center justify-content-start" [ngClass]="{
+                'fs-6': isSmall
+              }">{{ company }}
+            </div>
+            <div class="fs6 py-1 d-flex justify-content-md-center justify-content-start">{{ exchange }}</div>
+            <div class="d-flex justify-content-md-center justify-content-start">
+                <button type="button" class="btn btn-success me-3" (click)="openBuyTransactionModal()">Buy</button>
+                <button *ngIf="presentInPortfolio" type="button" class="btn btn-danger"
+                    (click)="openSellTransactionModal()">Sell</button>
+            </div>
+        </div>
+        <div class="col-1 profile-upper-mid logo-container">
+            <img class="logo" alt="" src="{{ logourl }}" style="display: block; margin: auto;" [ngClass]="{
+                'mb-3': isSmall
+              }">
+        </div>
+        <div class="col profile-upper-right">
+            <div [class]="priceClasses">
+                <div class="py-3 d-flex justify-content-md-center justify-content-end fs-1 fw-bold">{{ currentPrice
+                    }}
+                </div>
+                <div class="py-1 d-flex justify-content-md-center justify-content-end fs-5" [ngClass]="{
+                    'fs-6': isSmall
+                  }">
+                    <i *ngIf="!priceRise" class="bi bi-caret-down-fill"></i>
+                    <i *ngIf="priceRise" class="bi bi-caret-up-fill"></i>
+                    {{ changeInPrice }}({{ percentChange }}%)
+                </div>
+            </div>
+            <div class="py-1 d-flex justify-content-md-center justify-content-end fs-6">
+                {{ timeString }}
+            </div>
+        </div>
+    </div>
+    <div [class]="marketClass">{{ marketStateInnerHTML }}</div>
+    <div class="mt-3">
+        <mat-tab-group>
+            <mat-tab label="Summary">
+                <div class="row summary-main">
+                    <div class="col-md lefthalf mt-2 font-mob">
+                        <div>
+                            <div class="mb-1 ms-md-5 d-flex justify-content-center justify-content-md-start">
+                                <span class="fw-bold me-2">High Price: </span><span>{{ highPrice }}</span>
+                            </div>
+                            <div class="mb-1 ms-md-5 d-flex justify-content-center justify-content-md-start">
+                                <span class="fw-bold me-2">Low Price: </span><span>{{ lowPrice }}</span>
+                            </div>
+                            <div class="mb-1 ms-md-5 d-flex justify-content-center justify-content-md-start">
+                                <span class="fw-bold me-2">Open Price: </span><span>{{ openPrice }}</span>
+                            </div>
+                            <div class="mb-1 ms-md-5 d-flex justify-content-center justify-content-md-start">
+                                <span class="fw-bold me-2">Prev. Close: </span><span>{{ prevClose }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-center"
+                                style="margin-top: 20px; margin-bottom: 25px; font-size: 17px;">
+                                <span class="fw-bold text-underline"><u>About the
+                                        company</u></span>
+                            </div>
+                            <div class="d-flex justify-content-center company"><span class="fw-bold pe-2">IPO Start
+                                    Date:
+                                </span><span>{{ ipo }}</span>
+                            </div>
+                            <div class="d-flex justify-content-center company"><span class="fw-bold pe-2">Industry:
+                                </span><span>{{ industry }}</span>
+                            </div>
+                            <div class="d-flex justify-content-center company"><span class="fw-bold pe-2">Webpage:
+                                </span><a [href]="companySite" target="_blank">{{ companySite }}</a></div>
+                            <div><span class="fw-bold d-flex justify-content-center company">Company Peers:</span></div>
+
+                            <div class="d-flex justify-content-center">
+                                <ng-container *ngFor="let link of links; let last = last">
+                                    <a [routerLink]="link.link">{{ link.text }}</a><ng-container *ngIf="!last"
+                                        class="pe-1">,
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md d-flex justify-content-center">
+                        <highcharts-chart class="hourlychart" [Highcharts]="Highcharts" [options]="hourlyChartOptions">
+                        </highcharts-chart>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Top News">
+                <app-news></app-news>
+            </mat-tab>
+            <mat-tab label="Charts">
+                <div class="row chart-container">
+                    <div class="col-12 chart mt-2 d-flex justify-content-center">
+                        <highcharts-chart [Highcharts]="Highcharts" class="historical-chart"
+                            [options]="historicalChartOptions" constructorType="stockChart">
+                        </highcharts-chart>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Insights">
+                <div class="row insights-info-container d-flex justify-content-center">
+                    <div class="col-8 insights-table">
+                        <h2 class="text-center mb-4">Insider Sentiments</h2>
+                        <table class="table text-center mb-4">
+                            <thead class="table-dark"></thead>
+                            <thead>
+                                <tr>
+                                    <th scope="col">{{ company }}</th>
+                                    <th scope="col">MSPR</th>
+                                    <th scope="col">Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold">Total</td>
+                                    <td>{{ mspr.total }}</td>
+                                    <td>{{ change.total }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Positive</td>
+                                    <td>{{ mspr.positive }}</td>
+                                    <td>{{ change.positive }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Negative</td>
+                                    <td>{{ mspr.negative }}</td>
+                                    <td>{{ change.negative }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row insights-chart-container">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <highcharts-chart class="trends-chart" [Highcharts]="Highcharts" [options]="trendsChartOptions">
+                        </highcharts-chart>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center" [ngClass]="{
+                        'gap-between-charts': isSmall
+                      }">
+                        <highcharts-chart class="earnings-chart" [Highcharts]="Highcharts"
+                            [options]="earningsChartOptions">
+                        </highcharts-chart>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

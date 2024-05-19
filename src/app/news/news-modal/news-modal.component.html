@@ -1,0 +1,35 @@
+<div class="modal-info-container">
+    <div class="modal-header">
+        <div class="d-flex flex-column align-items-start" style="width: 70%">
+            <h1 class="mb-0 fw-bold">{{ newsdata.source }}</h1>
+            <h5 class="mb-0 text-secondary">{{ newsdate }}</h5>
+        </div>
+        <div style="margin-left: 90px;">
+            <button type="button" style="background-color: transparent;" class="dismiss-button"
+                (click)="activeModal.dismiss('Cross click')">
+                <i class="fa-solid fa-xmark" style="color: blue; text-decoration: underline;"></i>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body">
+        <h3 class="fw-bold mb-1">{{ newsdata.headline }}</h3>
+        <div>{{ newsdata.summary }}</div>
+        <div class="text-secondary mt-2">For more details click <a [href]="newsurl" target="_blank">here</a></div>
+    </div>
+    <div class="modal-body">
+        <div class="share-container">
+            <div class="mb-3">Share</div>
+            <div>
+                <a href="https://twitter.com/intent/post?text={{ newsdata.headline }}&url={{ newsurl }}" target="_blank"
+                    class="me-3">
+                    <i class="fa-brands fa-x-twitter twitter-icon"></i>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ newsurl }}&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">
+                    <i class="fa-brands fa-facebook-square facebook-icon"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
