@@ -8,6 +8,7 @@ This full-stack web application simulates live equity trading in a cloud environ
 
 ## Features
 - **Finnhub Stock APIs**: Fetch data for stock tickers, including price quotes, charts, and news.
+- The search bar utilized an autocomplete functionality whenever some characters were entered.
 - **Home Section**: Divided into Summary, Top News, Charts, and Insights tabs.
 - **Stock Trading**: Buy and sell shares, with transaction results stored in MongoDB.
 - **Portfolio Section**: Displays the user’s current portfolio.
