@@ -41,5 +41,5 @@ This full-stack web application simulates live equity trading in a cloud environ
 
 <div style="display: flex; justify-content: center;">
   <img src="images/5.png" width="800" height="350">
-  <img src="images/6.png" width="800" height="375">
+  <img src="images/6.png" width="800" height="420">
 </div>
