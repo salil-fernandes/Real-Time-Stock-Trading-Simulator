@@ -1,6 +1,6 @@
 # Real-Time Stock Trading Simulator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+This project was developed using [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
 This full-stack web application simulates live equity trading in a cloud environment. It features real-time stock transaction simulations, leveraging asynchronous data sharing for high fidelity. Built with Angular, TypeScript, and Bootstrap on the frontend and NodeJS on the backend with MongoDB as the primary database, the app is hosted on Google Cloud Platform.
 
