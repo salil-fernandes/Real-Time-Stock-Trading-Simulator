@@ -33,11 +33,13 @@ This full-stack web application simulates live equity trading in a cloud environ
 
 ### Insights
 - Includes insider sentiments, recommendation trends, and historical earnings per share (EPS) surprises.
+<img src="images/4.png" width="800" height="420">
 
 ## Additional Functionalities
 - **Watchlist**: Users can keep track of price variations for selected stocks.
 - **Portfolio Management**: View and manage current stock holdings.
 
-<img src="images/4.png" alt="Charts Tab" width="600">
-
-<img src="images/5.png" alt="Insights Tab" width="600">
+<div style="display: flex;">
+  <img src="images/5.png" width="300" height="420">
+  <img src="images/6.png" width="300" height="420">
+</div>
